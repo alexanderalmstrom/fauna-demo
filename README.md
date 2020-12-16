@@ -23,7 +23,7 @@ REACT_APP_FAUNA_SECRET=XXX
 
 Import `schema.graphql` in Fauna dashboard.
 
-Create some products in the GraphQL playgound tab with GraphQL mutations.
+Create some products in the GraphQL playground tab with mutations.
 
 ```gql
 mutation CreateProduct {
