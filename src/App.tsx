@@ -18,7 +18,7 @@ interface Product {
 
 const App = () => {
   const { data } = useQuery<Products>(gql`
-    query GetProducts {
+    query ListProducts {
       allProducts {
         data {
           _id

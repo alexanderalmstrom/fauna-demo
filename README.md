@@ -21,6 +21,40 @@ Create a `.env.local` file in the root and replace XXX with your Fauna secret ke
 REACT_APP_FAUNA_SECRET=XXX
 ```
 
+Import `schema.graphql` in Fauna dashboard.
+
+Create some products in the GraphQL playgound tab with GraphQL mutations.
+
+```gql
+mutation CreateProduct {
+  createProduct(
+    data: {
+      name: "Some product name"
+      description: "Some product description"
+      price: 100.00
+    }
+  ) {
+    name
+    description
+    price
+  }
+}
+```
+
+List all products with
+
+```gql
+query ListProducts {
+  allProducts {
+    data {
+      name
+      description
+      price
+    }
+  }
+}
+```
+
 Run development server
 
 ```bash
