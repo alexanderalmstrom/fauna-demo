@@ -1,0 +1,9 @@
+type Product {
+  name: String!
+  description: String
+  price: Float!
+}
+
+type Query {
+  allProducts: [Product!]
+}

@@ -1,26 +1,51 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import { gql, useQuery } from "@apollo/client";
 
-function App() {
+interface Products {
+  allProducts: ProductsData;
+}
+
+interface ProductsData {
+  data: [Product];
+}
+
+interface Product {
+  _id: string;
+  name: string;
+  description: string;
+  price: Float32Array;
+}
+
+const App = () => {
+  const { data } = useQuery<Products>(gql`
+    query getProducts {
+      allProducts {
+        data {
+          _id
+          name
+          description
+          price
+        }
+      }
+    }
+  `);
+
+  if (!data) return null;
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <pre>{JSON.stringify(data, null, 2)}</pre>
+      {data.allProducts.data.map((product) => {
+        return (
+          <div key={product._id}>
+            <h2>{product.name}</h2>
+            <div>{product.description}</div>
+            <div>{product.price} SEK</div>
+          </div>
+        );
+      })}
     </div>
   );
-}
+};
 
 export default App;
