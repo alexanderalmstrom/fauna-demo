@@ -18,7 +18,7 @@ interface Product {
 
 const App = () => {
   const { data } = useQuery<Products>(gql`
-    query getProducts {
+    query GetProducts {
       allProducts {
         data {
           _id
@@ -34,11 +34,10 @@ const App = () => {
 
   return (
     <div>
-      <pre>{JSON.stringify(data, null, 2)}</pre>
       {data.allProducts.data.map((product) => {
         return (
           <div key={product._id}>
-            <h2>{product.name}</h2>
+            <div>{product.name}</div>
             <div>{product.description}</div>
             <div>{product.price} SEK</div>
           </div>
