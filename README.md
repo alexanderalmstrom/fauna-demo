@@ -17,7 +17,7 @@ yarn install
 
 Create a `.env.local` file in the root and replace XXX with your Fauna secret key. Create your account and key at [https://fauna.com/](https://fauna.com/)
 
-```bash
+```env
 REACT_APP_FAUNA_SECRET=XXX
 ```
 
